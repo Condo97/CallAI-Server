@@ -2,13 +2,10 @@ package com.writesmith.core;
 
 import appletransactionclient.exception.AppStoreErrorResponseException;
 import com.oaigptconnector.model.generation.OpenAIGPTModels;
-import com.writesmith.database.dao.pooled.ReceiptDAOPooled;
 import com.writesmith.database.dao.pooled.TransactionDAOPooled;
 import com.writesmith.exceptions.DBObjectNotFoundFromQueryException;
 import com.writesmith.exceptions.PreparedStatementMissingArgumentException;
-import com.writesmith.apple.iapvalidation.RecentReceiptValidator;
 import com.writesmith.apple.iapvalidation.TransactionPersistentAppleUpdater;
-import com.writesmith.database.model.objects.Receipt;
 import com.writesmith.database.model.objects.Transaction;
 import com.writesmith.apple.iapvalidation.networking.itunes.exception.AppleItunesResponseException;
 import com.writesmith.openai.OpenAIGPTModelTierSpecification;
@@ -70,13 +67,13 @@ public class WSPremiumValidator {
         // Get most recent Apple updated and saved transaction with cooldown control
         Transaction transaction = TransactionPersistentAppleUpdater.getCooldownControlledAppleUpdatedMostRecentTransaction(userID);
 
-        // If the transaction is null, the user may be using Receipt instead, so try that too
-        if (transaction == null) {
-            // Get receipt and return isPremium
-            Receipt receipt = RecentReceiptValidator.getAndValidateMostRecentReceipt(userID);
-
-            return receipt != null && !receipt.isExpired();
-        }
+//        // If the transaction is null, the user may be using Receipt instead, so try that too
+//        if (transaction == null) {
+//            // Get receipt and return isPremium
+//            Receipt receipt = RecentReceiptValidator.getAndValidateMostRecentReceipt(userID);
+//
+//            return receipt != null && !receipt.isExpired();
+//        }
 
         // Return isPremium using transaction
         return transaction != null && AppStoreSubscriptionStatusToIsPremiumAdapter.getIsPremium(transaction.getStatus());
@@ -86,18 +83,18 @@ public class WSPremiumValidator {
         // Get most recent Transaction from DB
         Transaction transaction = TransactionDAOPooled.getMostRecent(userID);
 
-        // If the Transaction is null, get the most recent receipt and return if not isExpired
-        if (transaction == null) {
-            // Get Receipt and return isPremium
-            Receipt receipt = null;
-            try {
-                receipt = ReceiptDAOPooled.getMostRecent(userID);
-            } catch (DBObjectNotFoundFromQueryException e) {
-//                System.out.println("No Receipt found when getting isPremium...");
-            }
-
-            return receipt != null && !receipt.isExpired();
-        }
+//        // If the Transaction is null, get the most recent receipt and return if not isExpired
+//        if (transaction == null) {
+//            // Get Receipt and return isPremium
+//            Receipt receipt = null;
+//            try {
+//                receipt = ReceiptDAOPooled.getMostRecent(userID);
+//            } catch (DBObjectNotFoundFromQueryException e) {
+////                System.out.println("No Receipt found when getting isPremium...");
+//            }
+//
+//            return receipt != null && !receipt.isExpired();
+//        }
 
         return transaction != null && AppStoreSubscriptionStatusToIsPremiumAdapter.getIsPremium(transaction.getStatus());
     }

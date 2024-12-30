@@ -35,8 +35,8 @@ public class Main {
     private static final int MIN_THREADS = 1;
     private static final int TIMEOUT_MS = 8000;
 
-    private static final int DEFAULT_PORT = 443;
-    private static final int DEBUG_PORT = 2000;
+    private static final int DEFAULT_PORT = 950;
+    private static final int DEBUG_PORT = 20011;
 
     public static void main(String... args) throws SQLException {
         // Get threads from thread arg or MAX_THREADS
@@ -149,29 +149,17 @@ public class Main {
         final String v1Path = "/v1";
 
         webSocket(v1Path + Constants.URIs.GET_CHAT_STREAM_URI, GetChatWebSocket.class);
-        webSocket(v1Path + Constants.URIs.GET_CHAT_STREAM_URI_LEGACY_2, GetChatWebSocket_Legacy_2.class);
-        webSocket(v1Path + Constants.URIs.GET_CHAT_STREAM_URI_LEGACY_1, GetChatWebSocket_Legacy_1.class);
-        webSocket(v1Path + Constants.URIs.GET_CHAT_WITH_PERSISTENT_IMAGE_WEB_SOCKET, GetChatWithPersistentImageWebSocket.class);
         webSocket(v1Path + Constants.URIs.REALTIME, RealtimeWebSocket.class);
 
         /* dev */
         final String devPath = "/dev";
 
-        webSocket(devPath + Constants.URIs.GET_CHAT_STREAM_URI_LEGACY_2, GetChatWebSocket_Legacy_2.class);
-        webSocket(devPath + Constants.URIs.GET_CHAT_STREAM_URI_LEGACY_1, GetChatWebSocket_Legacy_1.class);
-        webSocket(devPath + Constants.URIs.GET_CHAT_WITH_PERSISTENT_IMAGE_WEB_SOCKET, GetChatWithPersistentImageWebSocket.class);
         webSocket(devPath + Constants.URIs.REALTIME, RealtimeWebSocket.class);
     }
 
     private static void configureStructuredOutputEndpoints() {
         // Structured Outputs
-        post(Constants.URIs.StructuredOutput.CHECK_IF_CHAT_REQUESTS_IMAGE_REVISION, (req, res) -> Server.structuredOutput(req, res, CheckIfChatRequestsImageRevisionSO.class));
-        post(Constants.URIs.StructuredOutput.CLASSIFY_CHAT, (req, res) -> Server.structuredOutput(req, res, ClassifyChatSO.class));
-        post(Constants.URIs.StructuredOutput.GENERATE_DRAWERS, (req, res) -> Server.structuredOutput(req, res, DrawersSO.class));
-        post(Constants.URIs.StructuredOutput.GENERATE_FLASH_CARDS, (req, res) -> Server.structuredOutput(req, res, FlashCardsSO.class));
-        post(Constants.URIs.StructuredOutput.GENERATE_GOOGLE_QUERY, (req, res) -> Server.structuredOutput(req, res, GenerateGoogleQuerySO.class));
-        post(Constants.URIs.StructuredOutput.GENERATE_SUGGESTIONS, (req, res) -> Server.structuredOutput(req, res, GenerateSuggestionsSO.class));
-        post(Constants.URIs.StructuredOutput.GENERATE_TITLE, (req, res) -> Server.structuredOutput(req, res, GenerateTitleSO.class));
+
     }
 
     private static void configureHttpEndpoints() {
@@ -180,17 +168,11 @@ public class Main {
 
     private static void configureHttpEndpoints(boolean dev) {
         // POST Functions
-        post(Constants.URIs.CHECK_IF_CHAT_REQUESTS_IMAGE_REVISION, Server::checkIfChatRequestsImageRevision);
-        post(Constants.URIs.CLASSIFY_CHAT, Server::classifyChat);
-        post(Constants.URIs.DELETE_CHAT_URI, Server::deleteChat);
-        post(Constants.URIs.GENERATE_DRAWERS, Server::generateDrawers);
         post(Constants.URIs.GENERATE_GOOGLE_QUERY, Server::generateGoogleQuery);
         post(Constants.URIs.GENERATE_SUGGESTIONS, Server::generateSuggestions);
         post(Constants.URIs.GENERATE_TITLE, Server::generateTitle);
         post(Constants.URIs.GENERATE_IMAGE, Server::generateImage);
-        post(Constants.URIs.GET_CHAT_URI, Server::getChat);
         post(Constants.URIs.GET_IS_PREMIUM_URI, Server::getIsPremium);
-        post(Constants.URIs.GET_REMAINING_URI, Server::getRemainingChats);
         post(Constants.URIs.GOOGLE_SEARCH_URI, Server::googleSearch);
         post(Constants.URIs.PRINT_TO_CONSOLE, Server::printToConsole);
         post(Constants.URIs.REGISTER_APNS, Server::registerAPNS);
@@ -238,7 +220,6 @@ public class Main {
         // Legacy Functions
         post(Constants.GET_DISPLAY_PRICE_URI, (req, res) -> new ObjectMapper().writeValueAsString( new BodyResponse(ResponseStatus.SUCCESS, new LegacyGetDisplayPriceResponse())));
         post(Constants.GET_SHARE_URL_URI, (req, res) -> new ObjectMapper().writeValueAsString(new BodyResponse(ResponseStatus.SUCCESS, new LegacyGetShareURLResponse())));
-        post(Constants.VALIDATE_AND_UPDATE_RECEIPT_URI_LEGACY, Server::validateAndUpdateReceipt);
 
         // dev functions
         if (dev) {

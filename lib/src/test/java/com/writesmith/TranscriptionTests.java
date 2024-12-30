@@ -30,7 +30,7 @@ public class TranscriptionTests {
     @DisplayName("Transcription Test")
     void transcriptionTest() throws IOException, DBSerializerException, SQLException, OpenAIGPTException, DBObjectNotFoundFromQueryException, InterruptedException, InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException, InvalidFileTypeException {
         TranscribeSpeechRequest request = new TranscribeSpeechRequest(
-                "RBdpat4XJLYgQDZe8mlLo/Q6skCwPbGxfD9x0pPdJAbAa5VXp9cPC7fN3BD0mbB/prufGLDJ7PtZsNI5OOeKwbEIAB4ldKpGFQIapftF1LfGxeinPkcTGC0zWvLvcbLwnAs/T8eZ3YwULBNbp3lGmQw2O6MTtwkPVHYiabL/S0E=",
+                "PtTBwHP4/AzHbGXfuHMpdRkWVcGbG+S/uBwKwcKKhpyMN76QaxLc49QvEpnXXgMsSS7k0kYR4+AG3QQ8a7zchOosgTCC/k7kkl4mKXEMk0ciQm++k/Nlj2pGnSojtAKjNTfD0WgsmxXAQ6hcAy08MqlhEjYVCaF83C3yXRwZd+U=",
                 "FileName.m4a",
                 Files.readAllBytes(Paths.get("/Users/alexcoundouriotis/IdeaProjects/WriteSmith-Server/lib/src/main/resources/voiceFile.m4a"))
         );

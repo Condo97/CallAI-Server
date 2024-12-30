@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SuggestionsGeneratorTests {
 
-    private static String authTokenRandom = "DQ4yr8KmudhBWzYPYQe4sM4PSveVrdyQEXOgnmVqMnNBE0NG6SopHgmlYjr2iwtLV5UK7MEf2RA4GCahqGzBHLmws2B+JCYpJ+Gi5wzmqOkfuO+0qJa6slGWnj8RGKO24qHFXe5e4ZDRN9sXpsjxes8YHBZrk92sXV7gYaSZ/3c=";
+    private static String authTokenRandom = "PtTBwHP4/AzHbGXfuHMpdRkWVcGbG+S/uBwKwcKKhpyMN76QaxLc49QvEpnXXgMsSS7k0kYR4+AG3QQ8a7zchOosgTCC/k7kkl4mKXEMk0ciQm++k/Nlj2pGnSojtAKjNTfD0WgsmxXAQ6hcAy08MqlhEjYVCaF83C3yXRwZd+U=";
 
     @BeforeAll
     static void setup() {

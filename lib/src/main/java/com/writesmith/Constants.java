@@ -19,14 +19,14 @@ public final class Constants {
     /* In-App Purchases Pricing */
     public static final int DEFAULT_PRICE_INDEX = 0;
     public static final double PRICE_VAR2_DISPLAY_CHANCE = 0.1;
-    public static final String WEEKLY_PRICE_VAR1 = "6.95";
-    public static final String WEEKLY_NAME_VAR1 = "chitchatultra";
-    public static final String MONTHLY_PRICE_VAR1 = "19.99";
-    public static final String MONTHLY_NAME_VAR1 = "ultramonthly";
-    public static final String WEEKLY_PRICE_VAR2 = "2.99";
-    public static final String WEEKLY_NAME_VAR2 = "chitchatultraunlimited";
-    public static final String MONTHLY_PRICE_VAR2 = "9.99";
-    public static final String MONTHLY_NAME_VAR2 = "writesmithultraunlimitedmonthly";
+    public static final String WEEKLY_PRICE_VAR1 = "1.99";
+    public static final String WEEKLY_NAME_VAR1 = "callaiultraweekly";
+    public static final String MONTHLY_PRICE_VAR1 = "6.99";
+    public static final String MONTHLY_NAME_VAR1 = "callaiultramonthly";
+//    public static final String WEEKLY_PRICE_VAR2 = "2.99";
+//    public static final String WEEKLY_NAME_VAR2 = "chitchatultraunlimited";
+//    public static final String MONTHLY_PRICE_VAR2 = "9.99";
+//    public static final String MONTHLY_NAME_VAR2 = "writesmithultraunlimitedmonthly";
 
     public static final String YEARLY_PRICE = "49.99";
     public static final String YEARLY_NAME = "chitchatultrayearly";
@@ -120,10 +120,10 @@ public final class Constants {
     /* Policy Retrieval Constants */
 
     /* MySQL Constants */
-    public static final String MYSQL_URL = "jdbc:mysql://localhost:3306/chitchat_schema";
+    public static final String MYSQL_URL = "jdbc:mysql://localhost:3306/callai_schema";
 
     /* Apple Server Constants */
-    public static final String Apple_Bundle_ID = "com.acapplications.ChitChat";
+    public static final String Apple_Bundle_ID = "com.acapplications.CallAI";
     public static final String Apple_Sandbox_APNS_Base_URL = "https://api.sandbox.push.apple.com:443";
     public static final String Apple_APNS_Base_URL = "https://api.push.apple.com:443";
     public static final String Apple_Sandbox_Storekit_Base_URL = "https://api.storekit-sandbox.itunes.apple.com";
@@ -133,7 +133,7 @@ public final class Constants {
     public static final String Apple_Subscriptions_URL_Path = "/subscriptions";
     public static final String Apple_Get_Subscription_Status_V1_Full_URL_Path = Apple_In_Apps_URL_Path + Apple_V1_URL_Path + Apple_Subscriptions_URL_Path;
     public static final String Apple_APNS_AuthKey_JWS_Path = "keys/AuthKey_3L975VA2YC.p8";
-    public static final String Apple_SubscriptionKey_JWS_Path = "keys/SubscriptionKey_PJ323P8QVH.p8";
+    public static final String Apple_SubscriptionKey_JWS_Path = "keys/SubscriptionKey_8Z74726ZD5.p8";
 
     public static final String Sandbox_Apple_Verify_Receipt_URL = "https://sandbox.itunes.apple.com/verifyReceipt";
     public static final String Apple_Verify_Receipt_URL = "https://buy.itunes.apple.com/verifyReceipt";

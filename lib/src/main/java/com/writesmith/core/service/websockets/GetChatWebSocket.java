@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oaigptconnector.Constants;
 import com.oaigptconnector.model.*;
-import com.oaigptconnector.model.generation.OpenAIGPTModels;
 import com.oaigptconnector.model.request.chat.completion.*;
 import com.oaigptconnector.model.request.chat.completion.content.OAIChatCompletionRequestMessageContent;
 import com.oaigptconnector.model.request.chat.completion.content.OAIChatCompletionRequestMessageContentText;
@@ -19,7 +18,6 @@ import com.writesmith.core.service.response.BodyResponse;
 import com.writesmith.core.service.response.ErrorResponse;
 import com.writesmith.core.service.response.GetChatStreamResponse;
 import com.writesmith.core.service.response.factory.BodyResponseFactory;
-import com.writesmith.database.dao.factory.ChatFactoryDAO;
 import com.writesmith.database.dao.pooled.User_AuthTokenDAOPooled;
 import com.writesmith.database.model.objects.User_AuthToken;
 import com.writesmith.exceptions.CapReachedException;
@@ -318,13 +316,6 @@ public class GetChatWebSocket {
             BodyResponse br = BodyResponseFactory.createBodyResponse(ResponseStatus.OAIGPT_ERROR, sbError.toString());
             session.getRemote().sendString(new ObjectMapper().writeValueAsString(br));
         }
-
-        // If not isUsingSelfServeOpenAIKey, Insert Chat in DB
-        ChatFactoryDAO.create(
-                u_aT.getUserID(),
-                completionTokens.get(),
-                promptTokens.get()
-        );
 
         // Print log to console
         printStreamedGeneratedChatDoBetterLoggingLol(

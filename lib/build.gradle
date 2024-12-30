@@ -21,7 +21,7 @@ jar {
     }
 
     destinationDirectory = file("out")
-    archiveBaseName = "WriteSmith_Server"
+    archiveBaseName = "CallAI_Server"
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
